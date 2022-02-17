@@ -40,24 +40,24 @@ function openLoginPopupWindow() {
   }
 }
 
-function sendPeriodicMessagesToPopupWindow() {
-  sendMessageInterval = window.setInterval(() => {
-    try {
-      if (loginPopupWindow != null && !loginPopupWindow.closed) {
-        loginPopupWindow.postMessage('Are you alive?', '*');
-      }
-    } catch (e) {}
-  }, 2000);
-}
-
 function listenOnPopupWindowClosed() {
   popupClosedInterval = window.setInterval(() => {
     try {
       if (loginPopupWindow == null || loginPopupWindow.closed) {
         console.log(
-          'close() called from popupClosedInterval => manually closing the popup'
+            'close() called from popupClosedInterval => manually closing the popup'
         );
         close();
+      }
+    } catch (e) {}
+  }, 2000);
+}
+
+function sendPeriodicMessagesToPopupWindow() {
+  sendMessageInterval = window.setInterval(() => {
+    try {
+      if (loginPopupWindow != null && !loginPopupWindow.closed) {
+        loginPopupWindow.postMessage('Are you alive?', '*');
       }
     } catch (e) {}
   }, 2000);
