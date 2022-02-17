@@ -12,10 +12,10 @@ function login() {
     document.getElementById(
       'message'
     ).innerText = `Already logged in with token: ${accessToken.data}`;
-    document.getElementById('message').style.color = 'crimson';
+    document.getElementById('message').style.color = 'green';
     setTimeout(_ => {
       document.getElementById('message').style.color = 'black';
-    }, 1000);
+    }, 1500);
     sendAuthRequest();
   } else if (loginPopupWindow != null && loginPopupWindow.focus) {
     loginPopupWindow.focus();
