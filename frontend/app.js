@@ -66,15 +66,11 @@ function close() {
   }
 }
 
-function handleMessageEvent(event) {
+window.addEventListener('message', event => {
   if (event.data.token) {
     console.log(`Token received => Auth`);
     console.dir(event.data.token);
     accessToken = event.data.token;
     close();
   }
-}
-
-window.addEventListener('message', event => {
-  handleMessageEvent(event);
 });
