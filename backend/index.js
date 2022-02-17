@@ -44,7 +44,7 @@ app.get('/auth', (request, response) => {
   );
   console.log(request.cookies.token);
   // We dinamically inject the token into the login.html file (in the span) - hardcoded for the PoC
-  response.sendfile(path.join(__dirname + '/views/login.html'));
+  response.sendfile(path.join(__dirname + '/login.html'));
 });
 
 app.listen(3007, function() {
