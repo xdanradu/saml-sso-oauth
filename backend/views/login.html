@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>oauth</title>
+</head>
+<body>
+<span style="display: none;" id="token">{ "scope": "1 2", "expiration_time": "12.03.2022" }</span>
+<script type="text/javascript">
+    var hasBeenSend = false;
+    var tokenString = document.getElementById("token").innerText;
+    var token = JSON.parse(tokenString);
+    token.scope = token.scope.split(" ");
+    token.expiration_time = token.expiration_time;
+    var message = {'token':token};
+    console.log(window);
+    window.addEventListener('message', function(event) {
+
+        if (event.data === 'Are you alive?') {
+            console.log(event.origin);
+            event.source.postMessage(message, event.origin);
+        }
+
+        if(hasBeenSend === true) {
+            return true;
+        }
+        hasBeenSend = true;
+    });
+</script>
+</body>
+</html>

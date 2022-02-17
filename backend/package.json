@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "scripts": {
+    "start-backend": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "3.x",
+    "mustache": "^4.2.0",
+    "mysql2": "^2.2.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+
+  }
+}

@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.idea
+/dist
+/frontend/node_modules
+/backend/node_modules
+/idp/node_modules
+/test-reports
+/tmp
