@@ -24,7 +24,7 @@ function login() {
     if (popupWindow != null && popupWindow.focus) {
       popupWindow.focus();
     } else {
-      const features = generateWindowFeaturesString();
+      const features = `scrollbars=yes, width=308, height=268, top=200, left=200`;
       popupWindow = window.open(url, 'myWindow', features);
       if (popupWindow.focus) {
         popupWindow.focus();
@@ -33,10 +33,6 @@ function login() {
       initiateMessagingWithChild();
     }
   }
-}
-
-function generateWindowFeaturesString() {
-  return `scrollbars=yes, width=308, height=268, top=200, left=200`;
 }
 
 function initiateMessagingWithChild() {
