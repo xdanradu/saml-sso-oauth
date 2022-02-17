@@ -64,7 +64,7 @@ function sendPeriodicMessagesToPopupWindow() {
 }
 
 function close() {
-  console.log('Clearing the close and messages intervals');
+  console.log('Clearing the popupClose and sendMessage intervals');
   window.clearInterval(popupClosedInterval);
   window.clearInterval(sendMessageInterval);
   if (loginPopupWindow != null) {
