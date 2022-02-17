@@ -6,13 +6,13 @@ let accessToken;
 
 function login() {
   if (accessToken) {
-    console.log(`Already logged in with token: ${accessToken}`);
+    console.log(`Already logged in with token: ${accessToken.data}`);
     console.log('Sending auth test request to backend');
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
 
     xhr.setRequestHeader('Accept', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken.data);
 
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
@@ -44,6 +44,7 @@ function initiateMessagingWithChild() {
     } catch (e) {}
   }, 2000);
 }
+
 
 function closePopupListener() {
   closeDetectionInterval = window.setInterval(() => {
