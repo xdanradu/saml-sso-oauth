@@ -6,15 +6,17 @@ let accessToken;
 
 function login() {
   if (accessToken) {
-    console.log(`Already logged in with token: ${accessToken.data}. Sending the bearer token to the backend`);
+    console.log(
+      `Already logged in with token: ${accessToken.data}. Sending the bearer token to the backend`
+    );
     sendAuthRequest();
   } else if (loginPopupWindow != null && loginPopupWindow.focus) {
-      loginPopupWindow.focus();
-    } else {
-      openLoginPopupWindow();
-      listenOnPopupWindowClosed();
-      sendPeriodicMessagesToPopupWindow();
-    }
+    loginPopupWindow.focus();
+  } else {
+    openLoginPopupWindow();
+    listenOnPopupWindowClosed();
+    sendPeriodicMessagesToPopupWindow();
+  }
 }
 
 function sendAuthRequest() {
@@ -48,12 +50,13 @@ function sendPeriodicMessagesToPopupWindow() {
   }, 2000);
 }
 
-
 function listenOnPopupWindowClosed() {
   popupClosedInterval = window.setInterval(() => {
     try {
       if (loginPopupWindow == null || loginPopupWindow.closed) {
-        console.log('close() called from popupClosedInterval => manually closing the popup');
+        console.log(
+          'close() called from popupClosedInterval => manually closing the popup'
+        );
         close();
       }
     } catch (e) {}
@@ -61,7 +64,7 @@ function listenOnPopupWindowClosed() {
 }
 
 function close() {
-  console.log('Clearing the close and messages intervals')
+  console.log('Clearing the close and messages intervals');
   window.clearInterval(popupClosedInterval);
   window.clearInterval(sendMessageInterval);
   if (loginPopupWindow != null) {
@@ -75,7 +78,9 @@ window.addEventListener('message', event => {
     accessToken = event.data.token;
     console.log(`Token received => Auth`);
     console.dir(event.data.token);
-    console.log('close() called after we receive the auth token from the child window => automatically closing the popup');
+    console.log(
+      'close() called after we receive the auth token from the child window => automatically closing the popup'
+    );
     close();
   }
 });

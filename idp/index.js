@@ -2,8 +2,8 @@ let express = require('express');
 let cors = require('cors');
 let morgan = require('morgan');
 
-morgan.token('id', function getId (req) {
-  return req.id
+morgan.token('id', function getId(req) {
+  return req.id;
 });
 
 let app = express();

@@ -28,7 +28,10 @@ app.get('/', (request, response) => {
 app.get('/saml/oauth', (request, response) => {
   console.log('saml/oauth');
   // if we don't have an authorization header then we redirect to IDP
-  if (request.headers.authorization && request.headers.authorization === `Bearer ${authSessionToken}`) {
+  if (
+    request.headers.authorization &&
+    request.headers.authorization === `Bearer ${authSessionToken}`
+  ) {
     console.dir(request.headers.authorization);
     response.send(200);
   } else {
@@ -40,7 +43,7 @@ app.post('/saml/sso', (request, response) => {
   console.log(
     `Validate IDP samlRequest (${request.cookies.token}) and then redirect to GET oauth`
   );
-  authSessionToken = request.cookies.token
+  authSessionToken = request.cookies.token;
   response.redirect('http://localhost:3007/oauth');
 });
 
