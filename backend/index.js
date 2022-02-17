@@ -32,13 +32,13 @@ app.get('/saml/oauth', (request, response) => {
 
 app.post('/saml/sso', (request, response) => {
   console.log(
-    'POST: We already have the cookie token in this POST endpoint but we redirect to GET'
+    'POST: We already have the cookie token from IDP in this POST endpoint so we redirect to GET'
   );
   console.log(request.cookies.token);
-  response.redirect('http://localhost:3007/auth');
+  response.redirect('http://localhost:3007/saml/sso');
 });
 
-app.get('/auth', (request, response) => {
+app.get('/saml/sso', (request, response) => {
   console.log(
     'GET: Now we can create a new session on the backend for the current user and return the REST api access token to the FE'
   );

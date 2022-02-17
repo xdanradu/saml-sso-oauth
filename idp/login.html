@@ -1,9 +1,74 @@
 <html>
-  <head> </head>
+  <head>
+    <style>
+      body{
+        padding-top:20px;
+        padding-left:20px;
+      }
+
+      button {
+        height: 34px;
+        color: white;
+        background: #005E3F;
+        border: 2px solid #91F54A;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width:250px;
+      }
+
+      button:hover {
+        background: #DFE3E6;
+        border: 1px solid #18AB42;
+        box-sizing: border-box;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #6D767C;
+
+      }
+
+      input {
+        padding:5px;
+        height: 32px;
+        background: #FFFFFF;
+        border: 1px solid #6D767C;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 24px;
+        width:250px;
+      }
+
+      input:focus {
+        top: calc(50% - 48px/2);
+        background: #FFFFFF;
+        border: 2px solid #18AB42;
+        box-sizing: border-box;
+        border-radius: 4px;
+
+        color: #293033;
+      }
+
+      .container {
+        display: flex; /* or inline-flex */
+        flex-direction: column;
+        gap: 10px;
+        column-gap: 20px;
+      }
+
+      h1 {
+        color: #005E3F;
+      }
+    </style>
+  </head>
   <body>
-    <pre>admin/admin</pre>
+
+    <h1>AOK+</h1>
+
+    <pre>user: <b>admin</b> password: <b>admin</b></pre>
+
 
     <form
+            class="container"
       name="login"
       id="login"
       action="http://localhost:3000/external-idp-login"

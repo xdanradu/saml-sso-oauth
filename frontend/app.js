@@ -36,38 +36,13 @@ function login() {
 }
 
 function generateWindowFeaturesString() {
-  const dualScreenLeft =
-    window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-  const dualScreenTop =
-    window.screenTop !== undefined ? window.screenTop : window.screenY;
-  const width = window.innerWidth
-    ? window.innerWidth
-    : document.documentElement.clientWidth
-    ? document.documentElement.clientWidth
-    : screen.width;
-  const height = window.innerHeight
-    ? window.innerHeight
-    : document.documentElement.clientHeight
-    ? document.documentElement.clientHeight
-    : screen.height;
-
-  // Calculate popup settings
-  const left = width / 2 - width / 2 + dualScreenLeft;
-  const top = height / 2 - height / 2 + dualScreenTop;
-  const scrollbars = 'yes';
-
-  // Generate popup features string
-  return `scrollbars=${scrollbars}, width=${width /
-    2}, height=${height}, top=${top}, left=${left}`;
+  return `scrollbars=yes, width=308, height=268, top=200, left=200`;
 }
 
 function initiateMessagingWithChild() {
   messagesToChildInterval = window.setInterval(() => {
     try {
-      //console.log(popupWindow);
       if (popupWindow != null && !popupWindow.closed) {
-        // console.log(popupWindow);
-        console.log('Ask if child is active');
         popupWindow.postMessage('Are you alive?', '*');
       }
     } catch (e) {}
@@ -75,13 +50,11 @@ function initiateMessagingWithChild() {
 }
 
 function closePopupListener() {
-  console.log('should add listener on close');
   closeDetectionInterval = window.setInterval(() => {
     try {
       // console.log(popupWindow);
       if (popupWindow == null || popupWindow.closed) {
         close();
-        console.log('close the popup');
       }
     } catch (e) {}
   }, 2000);
