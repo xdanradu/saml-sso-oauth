@@ -62,7 +62,7 @@
   <body>
     <h1>EXTERNAL IDP</h1>
 
-    <pre>user: <b>admin</b> password: <b>admin</b></pre>
+    <pre>username: <b>admin</b> password: <b>admin</b></pre>
 
     <form
       class="container"
@@ -71,8 +71,8 @@
       action="http://localhost:3000/external-idp-login"
       method="post"
     >
-      <input autofocus type="text" name="email" />
-      <input type="password" name="password" />
+      <input autofocus type="text" name="email" placeholder="username" />
+      <input type="password" name="password" placeholder="password" />
       <button>Login</button>
     </form>
   </body>

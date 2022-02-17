@@ -9,6 +9,13 @@ function login() {
     console.log(
       `Already logged in with token: ${accessToken.data}. Sending the bearer token to the backend`
     );
+    document.getElementById(
+      'message'
+    ).innerText = `Already logged in with token: ${accessToken.data}`;
+    document.getElementById('message').style.color = 'crimson';
+    setTimeout(_ => {
+      document.getElementById('message').style.color = 'black';
+    }, 1000);
     sendAuthRequest();
   } else if (loginPopupWindow != null && loginPopupWindow.focus) {
     loginPopupWindow.focus();
@@ -45,7 +52,7 @@ function listenOnPopupWindowClosed() {
     try {
       if (loginPopupWindow == null || loginPopupWindow.closed) {
         console.log(
-            'close() called from popupClosedInterval => manually closing the popup'
+          'close() called from popupClosedInterval => manually closing the popup'
         );
         close();
       }
