@@ -2,9 +2,11 @@
   "name": "client",
   "version": "0.0.1",
   "scripts": {
-    "start-frontend": "live-server --port=4200"
+    "start-frontend": "live-server --port=4200",
+    "prettier": "prettier --config ./.prettierrc --list-different \"**/*{.ts,.js,.json,.scss,.html}\" --write"
   },
   "dependencies": {
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "prettier": "~1.19.0"
   }
 }
