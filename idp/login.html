@@ -1,47 +1,46 @@
 <html>
   <head>
     <style>
-      body{
-        padding-top:20px;
-        padding-left:20px;
+      body {
+        padding-top: 20px;
+        padding-left: 20px;
       }
 
       button {
         height: 34px;
         color: white;
-        background: #005E3F;
-        border: 2px solid #91F54A;
+        background: #005e3f;
+        border: 2px solid #91f54a;
         box-sizing: border-box;
         border-radius: 4px;
-        width:250px;
+        width: 250px;
       }
 
       button:hover {
-        background: #DFE3E6;
-        border: 1px solid #18AB42;
+        background: #dfe3e6;
+        border: 1px solid #18ab42;
         box-sizing: border-box;
         border-radius: 4px;
         cursor: pointer;
-        color: #6D767C;
-
+        color: #6d767c;
       }
 
       input {
-        padding:5px;
+        padding: 5px;
         height: 32px;
-        background: #FFFFFF;
-        border: 1px solid #6D767C;
+        background: #ffffff;
+        border: 1px solid #6d767c;
         box-sizing: border-box;
         border-radius: 4px;
         font-size: 16px;
         line-height: 24px;
-        width:250px;
+        width: 250px;
       }
 
       input:focus {
-        top: calc(50% - 48px/2);
-        background: #FFFFFF;
-        border: 2px solid #18AB42;
+        top: calc(50% - 48px / 2);
+        background: #ffffff;
+        border: 2px solid #18ab42;
         box-sizing: border-box;
         border-radius: 4px;
 
@@ -49,32 +48,30 @@
       }
 
       .container {
-        display: flex; /* or inline-flex */
+        display: flex;
         flex-direction: column;
         gap: 10px;
         column-gap: 20px;
       }
 
       h1 {
-        color: #005E3F;
+        color: #005e3f;
       }
     </style>
   </head>
   <body>
-
-    <h1>AOK+</h1>
+    <h1>EXTERNAL IDP</h1>
 
     <pre>user: <b>admin</b> password: <b>admin</b></pre>
 
-
     <form
-            class="container"
+      class="container"
       name="login"
       id="login"
       action="http://localhost:3000/external-idp-login"
       method="post"
     >
-      <input type="text" name="email" />
+      <input autofocus type="text" name="email" />
       <input type="password" name="password" />
       <button>Login</button>
     </form>

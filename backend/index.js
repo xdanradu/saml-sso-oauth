@@ -1,10 +1,16 @@
 let express = require('express');
 let cors = require('cors');
 const cookieParser = require('cookie-parser');
+let morgan = require('morgan');
+const path = require('path');
+
 let app = express();
 app.use(cors());
 app.use(cookieParser());
-const path = require('path');
+app.use(morgan(':method :url :response-time ms'));
+
+// Using this state to emulate session only as a proof of concept, tokens should go into a map ip-user-token
+let authSessionToken;
 
 let bodyParser = require('body-parser');
 app.use(
@@ -22,7 +28,7 @@ app.get('/', (request, response) => {
 app.get('/saml/oauth', (request, response) => {
   console.log('saml/oauth');
   // if we don't have an authorization header then we redirect to IDP
-  if (request.headers.authorization) {
+  if (request.headers.authorization && request.headers.authorization === `Bearer ${authSessionToken}`) {
     console.dir(request.headers.authorization);
     response.send(200);
   } else {
@@ -31,20 +37,18 @@ app.get('/saml/oauth', (request, response) => {
 });
 
 app.post('/saml/sso', (request, response) => {
-  // validate samlRequest
   console.log(
-    'POST: We already have the cookie token from IDP in this POST endpoint so we redirect to GET'
+    `Validate IDP samlRequest (${request.cookies.token}) and then redirect to GET oauth`
   );
-  console.log(request.cookies.token);
+  authSessionToken = request.cookies.token
   response.redirect('http://localhost:3007/oauth');
 });
 
 app.get('/oauth', (request, response) => {
   console.log(
-    'GET: Now we can create a new session on the backend for the current user and return the REST api access token to the FE'
+    `Create a new BE session for current user and return the access token (${request.cookies.token}) to the FE in a HTML file`
   );
-  console.log(request.cookies.token);
-  // We dinamically inject the token into the login.html file (in the span) - hardcoded for the PoC
+  // Dinamically inject the token into the login.html file (in the span) - hardcoded 123454321 for the PoC
   response.sendfile(path.join(__dirname + '/login.html'));
 });
 
