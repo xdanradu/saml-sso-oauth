@@ -6,17 +6,8 @@ let accessToken;
 
 function login() {
   if (accessToken) {
-    console.log(
-      `Already logged in with token: ${accessToken.data}. Sending the bearer token to the backend`
-    );
-    document.getElementById(
-      'message'
-    ).innerText = `Already logged in with token: ${accessToken.data}`;
-    document.getElementById('message').style.color = 'green';
-    setTimeout(_ => {
-      document.getElementById('message').style.color = 'black';
-    }, 1500);
     sendAuthRequest();
+    displayMessage();
   } else if (loginPopupWindow != null && loginPopupWindow.focus) {
     loginPopupWindow.focus();
   } else {
@@ -24,6 +15,18 @@ function login() {
     listenOnPopupWindowClosed();
     sendPeriodicMessagesToPopupWindow();
   }
+}
+
+function displayMessage() {
+  console.log(
+      `Already logged in with token: ${accessToken.data}`
+  );
+  let message = document.getElementById('message');
+  message.innerText = `Already logged in with token: ${accessToken.data}`;
+  message.style.color = 'green';
+  setTimeout(_ => {
+    message.innerText = '';
+  }, 1500);
 }
 
 function sendAuthRequest() {
